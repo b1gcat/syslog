@@ -1,4 +1,4 @@
-package simplesyslog
+package syslog
 
 // Priority is the combination of severity and facility.
 // (see go's syslog package for more infos)
