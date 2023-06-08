@@ -4,7 +4,7 @@
 // Marcel Gebhardt
 // April 2018
 
-package simplesyslog
+package syslog
 
 import (
 	"crypto/tls"
