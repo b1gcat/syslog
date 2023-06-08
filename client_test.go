@@ -1,4 +1,4 @@
-package simplesyslog
+package syslog
 
 import (
 	"crypto/tls"
