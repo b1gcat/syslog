@@ -102,10 +102,12 @@ func (client *Client) Send(message string, priority Priority) error {
 		return TooManyBytesSentErr
 	}
 	var timestamp string
+	var cstSh, _ = time.LoadLocation("Asia/Shanghai") //上海
+	tm := time.Now().In(cstSh)
 	if client.Rfc3339 {
-		timestamp = time.Now().UTC().Format(time.RFC3339)
+		timestamp = tm.Format(time.RFC3339)
 	} else {
-		timestamp = time.Now().UTC().Format(time.Stamp)
+		timestamp = tm.Format(time.Stamp)
 	}
 	var hostnameCombi = client.Hostname
 	if !client.HostnameOnly {
