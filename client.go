@@ -102,6 +102,15 @@ func (client *Client) Send(message string, priority Priority) error {
 		return TooManyBytesSentErr
 	}
 	var timestamp string
+	var tm time.Time
+	
+	if runtime.GOOS != "windows"	 {
+ 		var cstSh, _ = time.LoadLocation("Asia/Shanghai") //上海
+		tm = time.Now().In(cstSh)
+ 	} else { // Unix-like
+ 		tm = time.Now()
+	}
+	
 	var cstSh, _ = time.LoadLocation("Asia/Shanghai") //上海
 	tm := time.Now().In(cstSh)
 	if client.Rfc3339 {
