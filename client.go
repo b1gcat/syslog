@@ -108,7 +108,8 @@ func (client *Client) Send(message string, priority Priority) error {
  		var cstSh, _ = time.LoadLocation("Asia/Shanghai") //上海
 		tm = time.Now().In(cstSh)
  	} else { // Unix-like
- 		tm = time.Now()
+ 		var cstSh = time.FixedZone("CST", 8*3600)       // 东八
+		tm = time.Now().In(cstSh)
 	}
 	
 	var cstSh, _ = time.LoadLocation("Asia/Shanghai") //上海
