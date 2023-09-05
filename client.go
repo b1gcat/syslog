@@ -13,6 +13,7 @@ import (
 	"net"
 	"os"
 	"time"
+	"runtime"
 )
 
 // ConnectionType defines wheather to connect via UDP or TCP (or TLS)
@@ -112,8 +113,6 @@ func (client *Client) Send(message string, priority Priority) error {
 		tm = time.Now().In(cstSh)
 	}
 	
-	var cstSh, _ = time.LoadLocation("Asia/Shanghai") //上海
-	tm := time.Now().In(cstSh)
 	if client.Rfc3339 {
 		timestamp = tm.Format(time.RFC3339)
 	} else {
